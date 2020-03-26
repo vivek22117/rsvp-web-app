@@ -1,6 +1,6 @@
 package com.doubledigit.solutions.rsvp.app.config;
 
-import com.doubledigit.solutions.rsvp.app.model.HarvestForm;
+import com.doubledigit.solutions.rsvp.app.model.Harvest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
@@ -35,7 +35,7 @@ public class FarmUpBeanConfig {
     }
 
     @Bean
-    public List<HarvestForm> dbHarvest() {
-        return new ArrayList<HarvestForm>();
+    public List<Harvest> dbHarvest() {
+        return new ArrayList<Harvest>();
     }
 }

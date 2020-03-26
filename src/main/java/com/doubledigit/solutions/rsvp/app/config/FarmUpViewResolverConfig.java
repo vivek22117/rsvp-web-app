@@ -9,7 +9,6 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 import org.springframework.web.servlet.view.groovy.GroovyMarkupConfigurer;
 import org.springframework.web.servlet.view.groovy.GroovyMarkupViewResolver;
-import org.thymeleaf.spring5.ISpringTemplateEngine;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
@@ -22,7 +21,7 @@ public class FarmUpViewResolverConfig {
 
     //Freemarker view resolver
     @Bean(name = "ftlViewResolver")
-    public ViewResolver ftlViewResolver(){
+    public ViewResolver ftlViewResolver() {
         FreeMarkerViewResolver viewResolver = new FreeMarkerViewResolver();
 
         viewResolver.setCache(true);
@@ -42,9 +41,9 @@ public class FarmUpViewResolverConfig {
         return configurer;
     }
 
-    //Thymeleaf Viewresolver config
+    //Thymeleaf View Resolver config
     @Bean
-    public ViewResolver thymeleafViewResolver(){
+    public ViewResolver thymeleafViewResolver() {
         ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
 
         viewResolver.setTemplateEngine(thymeleafEngine());
@@ -69,7 +68,7 @@ public class FarmUpViewResolverConfig {
     public ITemplateResolver thymeLeafTemplateResolver() {
         ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
 
-        templateResolver.setPrefix("/templates/thymeleaf/");
+        templateResolver.setPrefix("    /templates/thymeleaf/");
         templateResolver.setCacheable(false);
         templateResolver.setSuffix(".html");
         templateResolver.setTemplateMode(TemplateMode.HTML);
@@ -86,34 +85,33 @@ public class FarmUpViewResolverConfig {
         viewResolver.setPrefix("classpath:/templates/mustache/");
         viewResolver.setSuffix(".mustache");
         viewResolver.setOrder(2);
-        viewResolver.setViewNames(new String[]{"mst_*"});
+        viewResolver.setViewNames("mst_*");
 
         return viewResolver;
     }
 
     //Groovy Resolver
     @Bean
-    public GroovyMarkupViewResolver groovyViewResolver(){
-        GroovyMarkupViewResolver viewResolver = new GroovyMarkupViewResolver();
-
-        viewResolver.setSuffix(".tpl");
-        viewResolver.setOrder(3);
-        viewResolver.setViewNames(new String[]{"tpl_*"});
-
-        return viewResolver;
-    }
-
-    @Bean
-    public GroovyMarkupConfigurer groovyMarkupConfigurer(){
+    public GroovyMarkupConfigurer groovyMarkupConfigurer() {
         GroovyMarkupConfigurer configurer = new GroovyMarkupConfigurer();
 
         configurer.setResourceLoaderPath("classpath:/templates/groovy/");
         return configurer;
     }
 
+    @Bean
+    public GroovyMarkupViewResolver groovyViewResolver() {
+        GroovyMarkupViewResolver viewResolver = new GroovyMarkupViewResolver();
+
+        viewResolver.setSuffix(".tpl");
+        viewResolver.setOrder(3);
+        viewResolver.setViewNames("tpl_*");
+
+        return viewResolver;
+    }
 
     @Bean
-    public SpringResourceTemplateResolver springResourceTemplateResolver(){
+    public SpringResourceTemplateResolver springResourceTemplateResolver() {
         return new SpringResourceTemplateResolver();
     }
 }

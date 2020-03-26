@@ -16,11 +16,11 @@ public class WebExceptionController implements ErrorController {
     @ExceptionHandler(value = NullPointerException.class)
     public String NullExceptionHandler(HttpServletResponse response) {
         if (response.getStatus() == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
-            return "mst_form_generic_500";
+            return "mst_farm_generic_500";
         } else if (response.getStatus() == HttpStatus.NOT_FOUND.value()) {
-            return "mst_form_generic_404";
+            return "mst_farm_generic_404";
         }
-        return "mst_form_generic_404";
+        return "mst_farm_generic_404";
     }
 
     @Override

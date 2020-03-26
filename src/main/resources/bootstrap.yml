@@ -1,0 +1,34 @@
+server:
+  port: 9005
+
+spring:
+  main:
+    lazy-initialization: true
+  application:
+    name: rsvp-web-service
+  cloud:
+    config:
+      uri: http://localhost:9001/
+
+management:
+  endpoint:
+    shutdown:
+      enabled: true
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include:
+          - health
+          - refresh
+          - info
+          - metrics
+          - env
+          - mappings
+          - beans
+          - shutdown
+          - prometheus
+      base-path: /internal
+  server:
+    port: 8005
