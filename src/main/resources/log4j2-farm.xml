@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="debug">
 	<Properties>
-		<Property name="log-path">C:/logs</Property>
+		<Property name="log-path">./log/rsvp-web-app.log</Property>
 	</Properties>
 
 	<Appenders>

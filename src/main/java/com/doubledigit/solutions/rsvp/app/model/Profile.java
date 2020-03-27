@@ -9,7 +9,7 @@ import java.time.LocalDate;
 @Data
 @Entity
 @NamedQuery(name = "Profile.findByFirstName", query = "FROM Profile WHERE name = ?1")
-@Table(name = "profile")
+@Table(name = "signup")
 public class Profile {
 
     @Id
@@ -39,7 +39,6 @@ public class Profile {
     @Column(name = "birthday", columnDefinition = "DATE")
     private LocalDate bday;
 
-    @JsonIgnore
     @OneToOne(fetch = FetchType.EAGER,
             cascade = CascadeType.ALL,
             mappedBy = "profile")

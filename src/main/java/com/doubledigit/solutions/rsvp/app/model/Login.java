@@ -2,10 +2,7 @@ package com.doubledigit.solutions.rsvp.app.model;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @Entity
@@ -16,7 +13,7 @@ public class Login {
     private Long id;
 
     @Column(name = "username")
-    private String userName;
+    private String username;
 
     @Column(name = "password")
     private String password;
@@ -24,7 +21,8 @@ public class Login {
     @Column(name = "passphrase")
     private String passphrase;
 
-
+    @OneToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private Profile profile;
 
 
