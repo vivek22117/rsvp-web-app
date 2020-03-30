@@ -1,6 +1,7 @@
 package com.doubledigit.solutions.rsvp.app.repository;
 
 import com.doubledigit.solutions.rsvp.app.model.Profile;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -29,6 +30,9 @@ public interface ProfileRepository extends JpaRepository<Profile, Long> {
 
     @Query(value = "Select * from signup WHERE username LIKE ?1 AND password LIKE ?2", nativeQuery = true)
     List<Profile> findNativeProfiles(String username, String password);
+
+    @Query(value = "from Profile")
+    public List<Profile> findSortedProfiles(Sort sort);
 
     @Query(value = "delete from signup where username = :username", nativeQuery = true)
     public void deleteByUsername(@Param("username") String username);

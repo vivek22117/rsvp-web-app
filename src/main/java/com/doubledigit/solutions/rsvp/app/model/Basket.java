@@ -40,5 +40,10 @@ public class Basket {
     @Fetch(FetchMode.JOIN)
     private Login login;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "hid", insertable = false, updatable = false)
+    @Fetch(FetchMode.JOIN)
+    private Harvest harvest;
+
 
 }
